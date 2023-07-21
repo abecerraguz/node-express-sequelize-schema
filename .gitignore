@@ -1,0 +1,4 @@
+node_modules
+.DS_Store
+.env
+PGPASSWORD=rdy26b7VypqC27Dm6Z6M psql -h containers-us-west-83.railway.app -U postgres -p 7439 -d railway
