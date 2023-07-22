@@ -43,9 +43,9 @@ class Server {
 
         // Métodos inicialess
   
-        this.dbConnection();
+        // this.dbConnection();
         this.middlewares();
-        this.routes();
+        // this.routes();
     
     }
 
