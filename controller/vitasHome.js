@@ -2,7 +2,7 @@ import axios from "axios";
 import moment from 'moment';
 
 const obtenerPacientes = async() =>{
-    const salida = await axios.get('http://localhost:8000/api/pacientes/')
+    const salida = await axios.get('https://node-express-sequelize-schema-production.up.railway.app/api/pacientes/')
     return salida.data
 }
 
