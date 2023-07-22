@@ -1,12 +1,12 @@
 import axios from "axios";
 import moment from 'moment';
 
-const obtenerPacientes = async() =>{
-    const salida = await axios.get('https://node-express-sequelize-schema-production.up.railway.app/api/pacientes/')
+const obtenerPacientes = async () =>{
+    const salida = await axios.get( `${process.env.HOSTLOCAL}/api/pacientes` || `${process.env.HOSTPRODUCCION}/api/pacientes`)
     return salida.data
 }
 
-export const vistaHome = (req,res)=>{
+export const vistaHome = (req,res) => {
     obtenerPacientes()
         .then((result) => {
             const pacientes = result.proyectos

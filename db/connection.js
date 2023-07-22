@@ -1,19 +1,11 @@
 import { Sequelize } from 'sequelize';
 
-// DB LOCAL
-const db = new Sequelize( process.env.PGDATABASE, process.env.PGUSER, process.env.PGPASSWORD, {
-    host:process.env.PGHOST,
-    port: process.env.PGPORT,
+// CONEXION BASE DE DATOS
+const db = new Sequelize( process.env.PGDATABASELOCAL || process.env.PGDATABASE , process.env.PGUSERLOCAL || process.env.PGUSER, process.env.PGPASSWORDLOCAL || process.env.PGPASSWORD , {
+    host:process.env.PGHOSTLOCAL || process.env.PGHOST,
+    port: process.env.PGPORTLOCAL || process.env.PGPORT,
     dialect:'postgres'
 });
-
-// const sequelize = new Sequelize('database', 'username', 'password', {
-//     host: 'localhost',
-//     dialect: /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
-//   });
-
-// DB PRODUCCION
-// const db = new Sequelize( process.env.DATABASE_URL )
 
 export default db
 

@@ -66,7 +66,7 @@ class Server {
             */
 
             await db.authenticate()
-            await db.sync()
+            await db.sync({ alter: true })
             console.log('Database arriba')
         } catch (error) {
             throw new Error(error)
