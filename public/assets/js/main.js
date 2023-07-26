@@ -1,7 +1,9 @@
 import * as UI from './utilities/interfaz.js';
 import { openModal, validarNuevoPaciente } from './utilities/functions.js';
 import { checkString, checkCelular } from './utilities/validacionForm.js';
-import config from '../../config.json' assert {type: 'json'};
+// import config from '../../config.json' assert {type: 'json'};
+
+
 
 if (typeof window === 'object') {
 
@@ -71,8 +73,7 @@ if (typeof window === 'object') {
                             icon: 'success',
                             text: 'El archivo ha sido borrado'
                         })
-                        console.log('XXXXX-->', typeof config.HOSTLOCAL )
-                        axios.delete( config.HOSTLOCAL ? `${config.HOSTLOCAL}/api/pacientes/${id}` : `${config.HOSTPRODUCCION}/api/pacientes/${id}`)
+                        axios.delete(`/api/pacientes/${id}`)
                             .then(result => {
                                 console.log('Salida de result', result)
                                 window.location.reload();
