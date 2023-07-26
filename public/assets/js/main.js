@@ -71,8 +71,8 @@ if (typeof window === 'object') {
                             icon: 'success',
                             text: 'El archivo ha sido borrado'
                         })
-                        console.log('XXXXX', id)
-                        axios.delete( config.HOSTLOCAL ? `${config.HOSTLOCAL}/api/pacientes/${id}` : `${config.HOSTPRODUCCION}/api/pacinetes/${id}`)
+                        console.log('XXXXX-->', typeof config.HOSTLOCAL )
+                        axios.delete( config.HOSTLOCAL ? `${config.HOSTLOCAL}/api/pacientes/${id}` : `${config.HOSTPRODUCCION}/api/pacientes/${id}`)
                             .then(result => {
                                 console.log('Salida de result', result)
                                 window.location.reload();
