@@ -2,7 +2,6 @@ import axios from "axios";
 import moment from 'moment';
 
 const obtenerPacientes = async () => {
-    //     const salida = await axios.get( `${process.env.HOSTLOCAL}/api/pacientes` || `${process.env.HOSTPRODUCCION}/api/pacientes`)
     const salida = await axios.get(  process.env.HOSTLOCAL ? `${process.env.HOSTLOCAL}/api/pacientes`: `${process.env.HOSTPRODUCCION}/api/pacientes` )
     return salida.data
 }

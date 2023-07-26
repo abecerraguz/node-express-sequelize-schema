@@ -1,0 +1,4 @@
+{
+    "HOSTPRODUCCION": "https://app-bikeshop-api-ordenes-production.up.railway.app",
+    "HOSTLOCAL": "http://localhost:8000"
+}

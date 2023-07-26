@@ -44,6 +44,11 @@ footer small{
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item .nav-link:hover{
+    color: #ffffff;
 }
 
 .navbar-nav .nav-item .nav-link i{
@@ -51,3 +56,19 @@ footer small{
     margin-right: 0.3rem;
 }
 
+.infoAlert{
+    display: none;
+}
+/* .swal2-icon{
+    margin: 1em auto 0.6em;
+    width: 40px;
+    height:  40px;
+}
+
+.swal2-icon .swal2-icon-content{
+    font-size: 1.5rem;
+}
+
+.swal2-html-container{
+    margin: 0 !important;
+} */

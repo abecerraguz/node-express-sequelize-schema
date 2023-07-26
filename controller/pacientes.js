@@ -22,6 +22,7 @@ export const postPaciente = async (req,res) => {
 
    const { body } = req;
 
+
    try {
         const existePk_idPaciente = await Paciente.findOne({
                 where:{
@@ -70,11 +71,14 @@ export const putPaciente = async (req,res) => {
     }
 }
 
-export const deletePaciente = async (req,res) =>{
-    const { id } = req.params
-    
-    const paciente = await Paciente.findByPk(id);
+export const deletePaciente = async (req,res) => {
 
+    const { id } = req.params
+
+    console.log('Salida del ID paciente-->', id )
+
+    const paciente = await Paciente.findByPk(id);
+    
     if(!paciente){
         return res.status(404).json({
             msg:`No existe el proyecto con el id ${id}`
@@ -82,6 +86,7 @@ export const deletePaciente = async (req,res) =>{
     }
     await paciente.destroy();
     res.json(paciente)
+
 }
 
 // Obtiene todas las tereas de un proyecto

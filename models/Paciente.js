@@ -42,7 +42,7 @@ const Paciente = db.define('paciente',{
         allowNull: false
     },
     telefono:{
-        type:DataTypes.CHAR(10),
+        type:DataTypes.CHAR(12),
         unique:true
     }
 },
