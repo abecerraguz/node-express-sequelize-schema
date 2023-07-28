@@ -1,4 +1,0 @@
-{
-    "HOSTPRODUCCION": "https://node-express-sequelize-schema-production.up.railway.app",
-    "//HOSTLOCAL": "http://localhost:8000"
-}

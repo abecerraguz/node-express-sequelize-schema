@@ -1,4 +1,6 @@
 import { Sequelize } from 'sequelize';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // CONEXION BASE DE DATOS
 const db = new Sequelize( process.env.PGDATABASELOCAL || process.env.PGDATABASE , process.env.PGUSERLOCAL || process.env.PGUSER, process.env.PGPASSWORDLOCAL || process.env.PGPASSWORD , {
@@ -8,4 +10,5 @@ const db = new Sequelize( process.env.PGDATABASELOCAL || process.env.PGDATABASE 
 });
 
 export default db
+
 

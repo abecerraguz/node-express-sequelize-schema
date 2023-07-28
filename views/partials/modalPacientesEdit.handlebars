@@ -1,44 +1,44 @@
-<div class="modal fade" id="modalNuevoPacientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditPacientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese paciente</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar paciente</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="formNuevoPaciente">
+        <form id="editFormNuevoPaciente">
           <div class="mb-3">
-            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre">
+            <input type="text" class="form-control" id="editNombre" placeholder="Ingrese nombre">
             <small class="infoAlert ps-1 py-1 border-bottom"></small>
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido">
+            <input type="text" class="form-control" id="editApellido" placeholder="Ingrese apellido">
             <small class="infoAlert ps-1 py-1 border-bottom"></small>
           </div>
           <div class="mb-3">
-            <select class="form-select" id="sexo">
+            <select class="form-select" id="editSexo">
               <option selected>Seleccione Sexo</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
             </select>
           </div>
           <div class="mb-3">
-            <input type="date" class="form-control" id="fechaNacimiento" placeholder="Ingrese fecha de nacimiento">
+            <input type="date" class="form-control" id="editFechaNacimiento" placeholder="Ingrese fecha de nacimiento">
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="ciudad" placeholder="Ingrese ciudad">
+            <input type="text" class="form-control" id="editCiudad" placeholder="Ingrese ciudad">
             <small class="infoAlert ps-1 py-1 border-bottom"></small>
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="estado" placeholder="Ingrese estado">
+            <input type="text" class="form-control" id="editEstado" placeholder="Ingrese estado">
             <small class="infoAlert ps-1 py-1 border-bottom"></small>
           </div>
           <div class="mb-3">
-            <input type="tel" class="form-control" id="telefono" placeholder="Ingrese celular">
+            <input type="tel" class="form-control" id="editTelefono" placeholder="Ingrese celular">
              <small class="infoAlertCelular ps-1 py-1 border-bottom"></small>
           </div>
           <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary gato">Guardar</button>
           </div> 
         </form>
       </div>

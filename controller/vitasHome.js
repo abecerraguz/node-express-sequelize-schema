@@ -15,7 +15,7 @@ export const vistaHome = (req,res) => {
                
                 const paciente = {
                     pk_idPaciente:element.pk_idPaciente,
-                    nombre:element.nombre.toLowerCase(),
+                    nombre:element.nombre,
                     apellido:element.apellido,
                     sexo:element.sexo,
                     fechaNacimiento: moment(element.fechaNacimiento.toString()).locale('es-us').format('LL') ,

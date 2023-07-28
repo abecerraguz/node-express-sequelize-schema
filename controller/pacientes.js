@@ -24,15 +24,15 @@ export const postPaciente = async (req,res) => {
 
 
    try {
-        const existePk_idPaciente = await Paciente.findOne({
+        const existeTelefono = await Paciente.findOne({
                 where:{
-                    pk_idPaciente:body.pk_idPaciente
+                    telefono:body.telefono
                 }
         })
 
-        if(existePk_idPaciente){
-                return res.status(400).json({
-                    msg:`Ya existe el id del paciente ${body.pk_idPaciente }`
+        if(existeTelefono){
+                return res.status(409).json({
+                    msg:`Ya existe el telefono del paciente ${body.telefono }`
                 })
         }
 
@@ -55,10 +55,13 @@ export const putPaciente = async (req,res) => {
     const { body } = req;
 
     try {
+
+  
+
         const paciente = await Paciente.findByPk(id); 
         if(!paciente){
             return res.status(404).json({
-                msg:`No existe el proyecto con el id ${id}`
+                msg:`No existe el paciente con el id ${id}`
             })
         }
         await paciente.update(body);

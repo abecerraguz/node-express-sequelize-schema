@@ -65,8 +65,8 @@ class Server {
                 User.sync({ alter: true })- Esto verifica cuál es el estado actual de la tabla en la base de datos (qué columnas tiene, cuáles son sus tipos de datos, etc.), y luego realiza los cambios necesarios en la tabla para que coincida con el modelo.
             */
 
-            await db.authenticate()
-            await db.sync({ alter: true })
+            // await db.authenticate()
+            await db.sync({ force: false })
             console.log('Database arriba')
         } catch (error) {
             throw new Error(error)
@@ -85,7 +85,7 @@ class Server {
         this.app.use('/js',express.static( `${__dirname}/../public/assets/js`));
         this.app.use('/sweetalert2',express.static( `${__dirname}/../node_modules/sweetalert2/dist`));
         this.app.use('/axios',express.static( `${__dirname}/../node_modules/axios/dist`));
-
+        this.app.use('/moment',express.static( `${__dirname}/../node_modules/moment/dist`));
 
     }
 

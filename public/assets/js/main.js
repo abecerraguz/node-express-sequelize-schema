@@ -1,7 +1,6 @@
 import * as UI from './utilities/interfaz.js';
-import { openModal, validarNuevoPaciente } from './utilities/functions.js';
+import { validarNuevoPaciente, openModalNuevoPaciente } from './utilities/functions.js';
 import { checkString, checkCelular } from './utilities/validacionForm.js';
-// import config from '../../config.json' assert {type: 'json'};
 
 
 
@@ -9,8 +8,8 @@ if (typeof window === 'object') {
 
     window.addEventListener('DOMContentLoaded', function () {
 
-        UI.nuevoUsuario.addEventListener('click', openModal);
-        UI.formNuevoPaciente.addEventListener('submit', validarNuevoPaciente);
+        UI.nuevoUsuario.addEventListener('click', openModalNuevoPaciente );
+        UI.formNuevoPaciente.addEventListener('submit', validarNuevoPaciente );
 
         // INICIO Validacion por input Nuevo Usuario
         UI.nombre.addEventListener('input', (e) => {
@@ -56,7 +55,8 @@ if (typeof window === 'object') {
         })
         // Cierre Validacion por input Nuevo Usuario
 
-        UI.allButton.forEach(element => {
+        // All Button eliminar
+        UI.allButtonEliminar.forEach(element => {
             element.addEventListener('click', (e) => {
                 e.preventDefault();
                 let id = e.target.name
@@ -83,6 +83,73 @@ if (typeof window === 'object') {
                 })
             })
         })
+        // Cierre all Button eliminar
+
+        // Inicio Buttons para eliminar
+        UI.allButtonEditar.forEach(element => {
+            element.addEventListener('click', (e) => {
+
+                e.preventDefault();
+
+                let id = e.target.name
+                console.log('ID--->', id)
+                axios.get(`/api/pacientes/${id}`)
+                    .then(result => {
+
+                        UI.modalEditPacientes.toggle();
+
+                        const { pk_idPaciente, nombre, apellido, sexo, fechaNacimiento, ciudad, estado, telefono } = result.data
+
+                        UI.editNombre.value = nombre;
+                        UI.editApellido.value = apellido;
+                        UI.editSexo.value = sexo;
+                        UI.editFechaNacimiento.value = moment(fechaNacimiento).format('YYYY-MM-DD')
+                        UI.editCiudad.value = ciudad;
+                        UI.editEstado.value = estado;
+                        UI.editTelefono .value = telefono;
+                        UI.buttonEditarGuardar.setAttribute('id', pk_idPaciente)
+
+                       
+
+                    })
+            })
+        })
+        // Inicio Buttons para eliminar
+
+        //  Inicio Button guardar editar
+        UI.buttonEditarGuardar.addEventListener('click', (e) => {
+            e.preventDefault();
+            let pk_idPaciente = e.target.id,
+             nombre = document.querySelector('#editNombre').value,
+             apellido = document.querySelector('#editApellido').value,
+             sexo = document.querySelector('#editSexo').value,
+             fechaNacimiento  = document.querySelector('#editFechaNacimiento').value,
+             ciudad = document.querySelector('#editCiudad').value,
+             estado = document.querySelector('#editEstado').value,
+             telefono = document.querySelector('#editTelefono').value
+       
+            const editPaciente = {
+                pk_idPaciente,
+                nombre,
+                apellido,
+                sexo,
+                fechaNacimiento,
+                ciudad,
+                estado,
+                telefono
+            }
+
+             axios.put(`/api/pacientes/${pk_idPaciente}`,editPaciente)
+                .then( result => {
+                    result.data
+                    UI.modalEditPacientes.toggle();
+                    location.reload();
+                })
+                .catch(err => console.log(err))
+                     
+        })
+        // Cierre button guarda editar
+
 
 
     })

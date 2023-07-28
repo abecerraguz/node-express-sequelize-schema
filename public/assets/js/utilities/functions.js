@@ -8,9 +8,22 @@ import {  
 } from './validacionForm.js'
 
 
-export const openModal = (e) => {
+export const openClearModal = (e) => {
     e.preventDefault();
     UI.modalPacientes.toggle();
+    UI.nombre.value = '';
+    UI.apellido.value = '';
+    UI.sexo.value = 'Seleccione Sexo';
+    UI.fechaNacimiento.value = '';
+    UI.ciudad.value = '';
+    UI.estado.value = '';
+    UI.telefono.value = '';
+}
+
+
+export const openModalNuevoPaciente = (e) => {
+    e.preventDefault();
+    UI.modalNuevoPacientes.toggle();
 }
 
 export const infoModal = (info) =>{
@@ -47,8 +60,9 @@ class Paciente {
 
 // Validacion al hacer submit nuevo usuario
 export const validarNuevoPaciente = (e) => {
-
+  
     e.preventDefault();
+  
     let nombre = e.target.nombre.value,
     apellido = e.target.apellido.value,
     sexo = e.target.sexo.value,
@@ -56,25 +70,42 @@ export const validarNuevoPaciente = (e) => {
     ciudad = e.target.ciudad.value,
     estado = e.target.estado.value,
     telefono = e.target.telefono.value
+    console.log('Salidaaaaaa--->',nombre)
+    console.log('Salidaaaaaa--->',apellido)
+    console.log('Salidaaaaaa--->',sexo)
+    console.log('Salidaaaaaa--->',fechaNacimiento)
+    console.log('Salidaaaaaa--->',ciudad)
+    console.log('Salidaaaaaa--->',estado)
+    console.log('Salidaaaaaa--->',telefono)
 
-    if( checkString(nombre) && checkString(apellido) && checkString(ciudad) &&  checkString(estado) ){
+    const nuevoPaciente = new Paciente( nombre, apellido, sexo,fechaNacimiento, ciudad, estado, telefono )
+    const datosParaEnviar = {
+        pk_idPaciente: nuevoPaciente.pk_idPaciente,
+                nombre: nuevoPaciente.nombre,
+                apellido: nuevoPaciente.apellido,
+                sexo: nuevoPaciente.sexo,
+                fechaNacimiento: nuevoPaciente.fechaNacimiento,
+                ciudad: nuevoPaciente.ciudad,
+                estado: nuevoPaciente.estado,
+                telefono:nuevoPaciente.telefono
+    }
+
+
         
-        const nuevoPaciente = new Paciente(nombre, apellido, sexo,fechaNacimiento, ciudad, estado, telefono )
-        console.log('Salida de nuevoPaciente', nuevoPaciente )
-        console.log('Salida de nuevoPaciente', nuevoPaciente.telefono )
-        axios.post('/api/pacientes',{
-            pk_idPaciente: nuevoPaciente.pk_idPaciente,
-            nombre: nuevoPaciente.nombre,
-            apellido: nuevoPaciente.apellido,
-            sexo: nuevoPaciente.sexo,
-            fechaNacimiento: nuevoPaciente.fechaNacimiento,
-            ciudad: nuevoPaciente.ciudad,
-            estado: nuevoPaciente.estado,
-            telefono:nuevoPaciente.telefono
-        })
+    if( checkString(nombre) && checkString(apellido) && checkString(ciudad) &&  checkString(estado) ){
+        axios.post('/api/pacientes',datosParaEnviar)
         .then( () => {
-            UI.modalPacientes.toggle();
+            UI.modalNuevoPacientes.toggle();
             location.reload();
+        })
+        .catch( err =>{
+            Swal.fire({
+                position: 'center',
+                icon: 'info',
+                text: `${err.response.data.msg}`,
+                showConfirmButton: false,
+                timer: 2500
+            })
         })
     }else{
         Swal.fire({

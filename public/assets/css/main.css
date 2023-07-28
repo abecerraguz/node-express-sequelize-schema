@@ -59,6 +59,15 @@ footer small{
 .infoAlert{
     display: none;
 }
+
+/* #buttonEditar i{
+    font-size: 5rem;
+    display: block;
+}
+#buttonEliminar i{
+    font-size: 5rem;
+    display: block;
+} */
 /* .swal2-icon{
     margin: 1em auto 0.6em;
     width: 40px;
