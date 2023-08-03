@@ -118,3 +118,11 @@ export const validarNuevoPaciente = (e) => {
     }
 }
 
+// export const mostrarOcultarNav = (e) => {
+
+// }
+
+// export const mostrarOcultarNav = ( ) => {
+//         UI.ingresarData.classList.add('slide-down'); 
+// }
+

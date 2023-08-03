@@ -9,7 +9,7 @@ import agendarCitasRoutes from '../routes/agendarCita.js';
 
 // Importamos nuestro Motor de plantilla
 import { create } from 'express-handlebars';
-import homeRoutes from './../routes/home.routes.js';
+import vistaPacientes from '../routes/vistaPacientes.routes.js';
 
 
 // Creación de variables de entorno
@@ -38,7 +38,7 @@ class Server {
             agendar_citas:'api/agendar_citas',
 
             // Rutas para el Front End
-            root:'/'
+            rootPacientes:'/pacientes'
         }
 
         // Métodos inicialess
@@ -96,7 +96,7 @@ class Server {
         this.app.use( this.apiPaths.expedientes , expedienteRoutes );
         this.app.use( this.apiPaths.citas , citaRoutes );
         this.app.use( this.apiPaths.agendar_citas , agendarCitasRoutes )
-        this.app.use( this.apiPaths.root, homeRoutes )
+        this.app.use( this.apiPaths.rootPacientes, vistaPacientes )
     }
 
   

@@ -22,7 +22,9 @@ editFechaNacimiento= document.querySelector('#editFechaNacimiento'),
 editCiudad = document.querySelector('#editCiudad'),
 editEstado = document.querySelector('#editEstado'),
 editTelefono = document.querySelector('#editTelefono'),
-buttonEditarGuardar = document.querySelector('#modalEditPacientes button.gato')
+buttonEditarGuardar = document.querySelector('#modalEditPacientes button.gato'),
+navbar = document.querySelector('#navbar'),
+ingresarData = document.querySelector('.ingresarData')
 
 
 

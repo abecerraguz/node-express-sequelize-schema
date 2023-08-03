@@ -6,7 +6,7 @@ const obtenerPacientes = async () => {
     return salida.data
 }
 
-export const vistaHome = (req,res) => {
+export const vistaPaciente = (req,res) => {
     obtenerPacientes()
         .then((result) => {
             const pacientes = result.proyectos
@@ -29,7 +29,7 @@ export const vistaHome = (req,res) => {
             renderRespuesta( arr )
         })
     function renderRespuesta( pacientes ){
-        res.render("home",{
+        res.render("pacientes",{
             layout:"main",
             title:"Bienvenidos al Sistema de Administración Clinica Santa María",
             pacientes:pacientes

@@ -8,6 +8,8 @@ if (typeof window === 'object') {
 
     window.addEventListener('DOMContentLoaded', function () {
 
+        const windowObject = window.document;
+
         UI.nuevoUsuario.addEventListener('click', openModalNuevoPaciente );
         UI.formNuevoPaciente.addEventListener('submit', validarNuevoPaciente );
 
@@ -149,8 +151,8 @@ if (typeof window === 'object') {
                      
         })
         // Cierre button guarda editar
-
-
+        // mostrarOcultarNav()
+        // UI.navbar.addEventListener('mouseover', mostrarOcultarNav )
 
     })
 
