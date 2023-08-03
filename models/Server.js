@@ -82,6 +82,7 @@ class Server {
         this.app.use('/bootstrap',express.static( `${__dirname}/../node_modules/bootstrap/dist/css`));
         this.app.use('/bootstrapicons',express.static( `${__dirname}/../node_modules/bootstrap-icons/font`));
         this.app.use('/css',express.static( `${__dirname}/../public/assets/css`));
+        this.app.use('/img',express.static( `${__dirname}/../public/assets/img`));
         this.app.use('/js',express.static( `${__dirname}/../public/assets/js`));
         this.app.use('/sweetalert2',express.static( `${__dirname}/../node_modules/sweetalert2/dist`));
         this.app.use('/axios',express.static( `${__dirname}/../node_modules/axios/dist`));
