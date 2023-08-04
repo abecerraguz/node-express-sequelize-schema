@@ -4,8 +4,8 @@
     <hr>
     <div class="table-responsive-sm">
         <div class="contentIngresarPaciente">
-            <h2 class="titlePacientes"><span>Lista de Pacientes</span></h2>
-            <a class="ingresarData__link" href="#" id="nuevoPaciente"><i class="bi bi-plus-circle"></i>Nuevo paciente</a>
+            <h2 class="titlePacientes"><span>Lista de Especialistas</span></h2>
+            <a class="ingresarData__link" href="#" id="nuevoEspecialista"><i class="bi bi-plus-circle"></i>Nuevo especialista</a>
         </div>
         <div class="contentTable">
             <table class="table px-2 table-hover">
@@ -16,29 +16,25 @@
                         <th scope="col">Apellido</th>
                         <th scope="col">Sexo</th>
                         <th scope="col">Fecha de Nacimiento</th>
-                        <th scope="col">Ciudad</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Celular</th>
-                        <th scope="col">Acción</th>
+                        <th scope="col">Especialidad</th>
+                         <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="infoTable">
-                    {{#each pacientes}}
+                    {{#each especialistas }}
                     <tr>
-                        <td data-label="">{{this.pk_idPaciente}}</td>
+                        <td data-label="">{{this.pk_idEspecialista}}</td>
                         <td data-label="">{{this.nombre}}</td>
                         <td data-label="">{{this.apellido}}</td>
                         <td data-label="">{{this.sexo}}</td>
                         <td data-label="">{{this.fechaNacimiento}}</td>
-                        <td data-label="">{{this.ciudad}}</td>
-                        <td data-label="">{{this.estado}}</td>
-                        <td data-label="">{{this.telefono}}</td>
+                        <td data-label="">{{this.especialidad}}</td>
                         <td>
                             {{!-- // infoProducto(buscar.store_name, buscar.product_id,
                             replaceQuotes(buscar.product_name), buscar.quantity) --}}
-                            <button type="button" name="{{this.pk_idPaciente}}" class="btn btn-warning btn-sm"
+                            <button type="button" name="{{this.pk_idEspecialista}}" class="btn btn-warning btn-sm"
                                 id="buttonEditar"><i class="bi bi-pencil-fill"></i> Editar</button>
-                            <button type="button" name="{{this.pk_idPaciente}}" class="btn btn-danger btn-sm"
+                            <button type="button" name="{{this.pk_idEspecialista}}" class="btn btn-danger btn-sm"
                                 id="buttonEliminar"><i class="bi bi-trash"></i> Eliminar</button>
 
                         </td>
@@ -51,7 +47,8 @@
 
     </div>
 </div>
-{{> partials/modalPacientes }}
+{{> partials/modalEspecialistas }}
+{{!-- {{> partials/modalEspecialistas }}
 {{> partials/modalPacientesEdit }}
-{{> partials/modalInfoAlert }}
+{{> partials/modalInfoAlert }} --}}
 {{> partials/footer }}
