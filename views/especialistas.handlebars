@@ -30,13 +30,10 @@
                         <td data-label="">{{this.fechaNacimiento}}</td>
                         <td data-label="">{{this.especialidad}}</td>
                         <td>
-                            {{!-- // infoProducto(buscar.store_name, buscar.product_id,
-                            replaceQuotes(buscar.product_name), buscar.quantity) --}}
-                            <button type="button" name="{{this.pk_idEspecialista}}" class="btn btn-warning btn-sm"
-                                id="buttonEditar"><i class="bi bi-pencil-fill"></i> Editar</button>
-                            <button type="button" name="{{this.pk_idEspecialista}}" class="btn btn-danger btn-sm"
-                                id="buttonEliminar"><i class="bi bi-trash"></i> Eliminar</button>
-
+                            <div class="contentButton">
+                                <button type="button" name="{{this.pk_idEspecialista}}" class="btn btn-warning btn-sm" id="buttonEditar"><i class="bi bi-pencil-fill"></i> Editar</button>
+                                <button type="button" name="{{this.pk_idEspecialista}}" class="btn btn-danger btn-sm" id="buttonEliminar"><i class="bi bi-trash"></i> Eliminar</button>
+                            </div>
                         </td>
                     </tr>
                     {{/each}}
@@ -47,8 +44,7 @@
 
     </div>
 </div>
-{{> partials/modalEspecialistas }}
-{{!-- {{> partials/modalEspecialistas }}
-{{> partials/modalPacientesEdit }}
-{{> partials/modalInfoAlert }} --}}
+{{> partials/modalAddDataInput}}
+{{> partials/modalEditDataInput}}
+{{> partials/modalInfoAlert }}
 {{> partials/footer }}

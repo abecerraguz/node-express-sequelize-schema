@@ -1,6 +1,5 @@
 import * as UI from './interfaz.js';
-// import dotenv from 'dotenv';
-// dotenv.config();
+
 
 import {  
     checkString,
@@ -8,46 +7,18 @@ import {  
 } from './validacionForm.js'
 
 
-// export const openClearModal = (e) => {
-//     e.preventDefault();
-//     UI.modalNuevoPacientes;
-//     UI.nombre.value = '';
-//     UI.apellido.value = '';
-//     UI.sexo.value = 'Seleccione Sexo';
-//     UI.fechaNacimiento.value = '';
-//     UI.ciudad.value = '';
-//     UI.estado.value = '';
-//     UI.telefono.value = '';
-// }
-
-// export const modalNuevoPacientes = new bootstrap.Modal(document.getElementById('modalNuevoPacientes'), {keyboard: false}),
-// modalNuevoEspecialista =  new bootstrap.Modal(document.getElementById('modalNuevoEspecialista'), {keyboard: false}),
-// modalEditPacientes = new bootstrap.Modal(document.getElementById('modalEditPacientes'), {keyboard: false}),
-// modalInfoAlert = new bootstrap.Modal(document.getElementById('modalInfoAlert'), {keyboard: false}),
-
-
-export const openModalNuevoPaciente = (e) => {
+export const openModalNuevoDataInput = (e) => {
     e.preventDefault();
-    if( window.location.pathname === '/pacientes' ){
-        const modalNuevoPacientes = new bootstrap.Modal(document.getElementById('modalNuevoPacientes'), {keyboard: false})
-        modalNuevoPacientes.toggle();
-    }
+    const modalNuevoPacientes = new bootstrap.Modal(document.getElementById('modalAddDataInput'), {keyboard: false})
+    modalNuevoPacientes.toggle();
 }
 
-export const openModalNuevoEspecialista = (e) => {
-    e.preventDefault();
-    if( window.location.pathname === '/especialistas' ){
-        const modalNuevoEspecialista =  new bootstrap.Modal(document.getElementById('modalNuevoEspecialista'), {keyboard: false})
-        modalNuevoEspecialista.toggle();
-    }
-}
-
-export const infoModal = (info) =>{
+export const infoModal = (info) => {
     UI.modalInfoAlert.toggle();
     UI.infoMensaje.innerHTML = info
 }
 
-class Paciente {
+class Paciente{
 
     constructor( nombre, apellido, sexo, fechaNacimiento, ciudad, estado, telefono ){
 
@@ -73,7 +44,7 @@ class Paciente {
 
 }
 
-class Especialista {
+class Especialista{
 
     constructor( nombre, apellido, sexo, fechaNacimiento, especialidad ){
 
@@ -128,7 +99,7 @@ export const validarNuevoPaciente = (e) => {
         axios.post('/api/pacientes',datosParaEnviar)
         .then( () => {
             if( window.location.pathname === '/pacientes' ){
-                const modalNuevoPacientes = new bootstrap.Modal(document.getElementById('modalNuevoPacientes'), {keyboard: false})
+                const modalNuevoPacientes = new bootstrap.Modal(document.getElementById('modalAddDataInput'), {keyboard: false})
                 modalNuevoPacientes.toggle();
             }
             location.reload();
@@ -179,7 +150,7 @@ export const validarNuevoEspecialista = (e) => {
         axios.post('/api/especialistas',datosParaEnviar)
         .then( (result) => {
             if( window.location.pathname === '/especialistas' ){
-                const modalNuevoEspecialista =  new bootstrap.Modal(document.getElementById('modalNuevoEspecialista'), {keyboard: false})
+                const modalNuevoEspecialista =  new bootstrap.Modal(document.getElementById('modalAddDataInput'), {keyboard: false})
                 modalNuevoEspecialista.toggle();
             }
             console.log(result)
@@ -221,11 +192,4 @@ export const addActive = (value) => {
     }
 }
 
-// export const mostrarOcultarNav = (e) => {
-
-// }
-
-// export const mostrarOcultarNav = ( ) => {
-//         UI.ingresarData.classList.add('slide-down'); 
-// }
 

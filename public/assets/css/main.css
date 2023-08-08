@@ -167,3 +167,12 @@ a.nav-link.active:after {
     left: auto;
 }
 
+.contentButton{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.contentButton button{
+    width: 50%;
+}
+
