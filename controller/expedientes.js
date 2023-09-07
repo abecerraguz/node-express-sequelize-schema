@@ -4,7 +4,7 @@ import Expediente from '../models/Expediente.js';
 
 export const getExpedientes = async(req,res) =>{
     const expedientes = await Expediente.findAll();
-    res.json({proyectos: expedientes})
+    res.json({expedientes: expedientes})
 }
 
 export const getExpediente = async (req,res) =>{
@@ -53,7 +53,6 @@ export const putExpediente = async (req,res) => {
 
     const { id } = req.params
     const { body } = req;
-
     try {
         const expediente = await Expediente.findByPk(id); 
         if(!expediente){
@@ -63,6 +62,7 @@ export const putExpediente = async (req,res) => {
         }
         await expediente.update(body);
         res.json(expediente)
+     
 
     } catch (error) {
         res.status(500).json({

@@ -5,7 +5,7 @@ import db from './../db/connection.js';
 const Expediente = db.define('expediente',{
 
     pk_idPaciente:{
-        type:DataTypes.CHAR(7),
+        type:DataTypes.CHAR(6),
         primaryKey:true,
         allowNull: false,
         validate: {

@@ -9,11 +9,9 @@ const obtenerEspecialistas = async () => {
 export const vistaEspecialista = (req,res) => {
     obtenerEspecialistas()
         .then((result) => {
-            const especialistas = result.proyectos
-            
+            const especialistas = result.especialistas
             const arr = []
             especialistas.forEach((element) => {
-               
                 const especialista = {
                     pk_idEspecialista:element.pk_idEspecialista,
                     nombre:element.nombre,
@@ -22,9 +20,7 @@ export const vistaEspecialista = (req,res) => {
                     fechaNacimiento: moment(element.fechaNacimiento.toString()).locale('es-us').format('LL') ,
                     especialidad:element.especialidad
                 }
-
                 arr.push(especialista)
-                
             })
             console.log( 'Especialistas--->',  arr )
             renderRespuesta( arr )

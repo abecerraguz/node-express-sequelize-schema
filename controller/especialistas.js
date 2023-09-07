@@ -1,10 +1,10 @@
 import Especialista from '../models/Especialista.js';
-
+import AgendarCita from '../models/AgendarCita.js';
 
 
 export const getEspecialistas = async(req,res) =>{
     const especialistas = await Especialista.findAll();
-    res.json({proyectos: especialistas})
+    res.json({especialistas: especialistas})
 }
 
 export const getEspecialista = async (req,res) =>{
@@ -84,6 +84,56 @@ export const deleteEspecialista = async (req,res) =>{
     await especialista.destroy();
     res.json(especialista)
 }
+
+export const getCitasEspecialistas = async (req,res) => {
+
+    const { id } = req.params
+    // const { body } = req;
+
+    try{
+     
+        const citas = await Especialista.findAll({
+          include: [{
+            model: AgendarCita,
+            where: {
+                pk_idEspecialista: id,
+            },
+            // attributes: ["nombre"]
+          }],
+        });
+        return res.json({citas: citas});
+      } catch (error) {
+            console.error('Error:', error);
+      }
+
+
+}
+
+
+// Obtiene todas las tereas de un proyecto
+export async function getEspecialistasCitasAgendadas(req,res) {
+    // const { id } = req.params;
+    try {
+
+      const tareas = await Especialista.findAll({
+        // include: [{ model:   AgendarCita }],
+        attributes: ["nombre", "apellido", "especialidad"],
+        // where: { proyectoId: id },
+      });
+
+        if(!tareas){
+            console.log('Mierda', tareas.length)
+            return res.status(404).json({
+                msg:`El proyecto no tiene asignada ninguna tarea`
+            })
+        }else{
+            res.json(tareas);
+        }
+   
+    } catch (e) {
+      return res.status(500).json({ message: e.message });
+    }
+  }
 
 // Obtiene todas las tereas de un proyecto
 // export async function getProyectoTareas(req,res) {

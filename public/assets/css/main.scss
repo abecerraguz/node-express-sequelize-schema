@@ -1,0 +1,475 @@
+// Variables 
+$fondo-body: #dbdbdb;
+
+$fondo-footer: #fafafa;
+$fondo-action: #ebe8e8;
+$fondo-titleTable: #2c7fb7;
+
+
+// Boton nuevo paciente,especialista
+$fondo-button-buttonNuevaData:#2c7fb7;
+$fondo-button-buttonNuevaData-hover:#085c94;
+$text-button-buttonNuevaData:#ffffff;
+
+// Boton guardar
+$fondo-button-guardar:#2c7fb7;
+$fondo-button-guardar-hover:#085c94;
+$text-button-guardar:#ffffff;
+
+// Boton nuevo paciente
+$fondo-button-editaPaciente:#2c7fb7;
+$fondo-button-editaPaciente-hover:#085c94;
+$text-button-editaPaciente:#ffffff;
+
+// Boton nuevo expediente
+$fondo-button-editaExpediente:#2c7fb7;
+$fondo-button-editaExpediente-hover:#085c94;
+$text-button-editaExpediente:#ffffff;
+
+// Boton Eliminar
+$fondo-button-eliminar:#dc3545;
+$fondo-button-eliminar-hover:#de061c;
+$text-button-eliminar:#ffffff;
+
+
+
+
+$fondo-button-two-hover:#80bbe3;
+$fondo-button-one:#ffffff;
+$fondo-table:#f1f1f1;
+$fondo-contetn-table:#ffffff;
+
+
+
+$text-button-one:#2c7fb7;
+
+
+$border-button:#31719c;
+$border: #cae9f4;
+$border-left:#dde9ed;
+$border-top: #88b4c3;
+$border-img-avatar: #80bbe3;
+$border-text: #80bbe3;
+
+$color-text-nav: #ffffff;
+$color-text-hover: #94e2ff;
+$color-text-border-right: #94e2ff;
+
+$color-name:#2c7fb7;
+$color-text-hover: #000000;
+$border-radius-0: 0;
+$border-radius-5: 5px;
+$border-radius-10:10px;
+$border-radius-15:15px;
+$border-radius-20:20px;
+
+// Breakpoints
+$screen-xs-min: 320px;
+$screen-sm-min: 544px;
+$screen-md-min: 768px;
+$screen-lg-min: 1024px;
+
+// Font-Family
+$font-family-sans-serif: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+@mixin breakpoint($media) {
+  @if $media == xs {
+    @media only screen and (min-width: $screen-xs-min) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: $screen-sm-min) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: $screen-md-min) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: $screen-lg-min) { @content; }
+  }
+}
+
+
+body{
+  background-color:$fondo-body;
+}
+
+footer{
+  width: 100%;
+  height: auto;
+  border-top: 1px solid $border-top;
+  background-color: $fondo-footer;
+  text-align: center;
+}
+
+footer small{
+  display: block;
+  padding: 20px 0;
+  text-transform: uppercase;
+}
+
+.table-responsive-sm{
+  padding: 0 1rem 0.2rem 1rem;
+  background-color: $fondo-table;
+  position: relative;
+}
+
+.contentTable{
+  padding: 0 0.8rem 0.5rem 0.8rem;
+  margin-bottom: 0.5rem;
+  background-color: $fondo-contetn-table;
+  box-shadow: 0px 0px 14px rgb(98 98 98 / 27%);
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.table-responsive-sm .contentTable table tr td{
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.table-responsive-sm .contentTable table thead{
+  background-color: #f1f1f1!important;
+}
+
+.navbar-nav .nav-item .nav-link{
+  color: $color-text-nav;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  border-right: 1px solid $color-text-border-right;
+  height: 10px;
+
+}
+
+.navbar-nav .nav-item .nav-link i{
+  font-size: 1.2rem;
+  margin-right: 0.3rem;
+}
+
+.infoAlert{
+  display: none;
+}
+
+
+.buttonNuevaData{
+  padding: 0.3rem 1rem;
+  background-color: $fondo-button-buttonNuevaData;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.3rem 0;
+  color: $text-button-buttonNuevaData;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    color:$text-button-buttonNuevaData;
+    background-color:$fondo-button-buttonNuevaData-hover;
+  }
+  i{
+    font-size: 1rem;
+    margin-right: 0.2rem;
+  }
+}
+
+.buttonGuardar{
+  padding: 0.3rem 1rem;
+  background-color:$fondo-button-guardar;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.3rem 0;
+  color: $text-button-guardar;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover{
+    color:$text-button-guardar;
+    background-color:$fondo-button-guardar-hover;
+    border: none;
+  }
+  i{
+    font-size: 1rem;
+    margin-right: 0.2rem;
+  }
+}
+
+.buttonEditarPaciente{
+  padding: 0.3rem 1rem;
+  background-color: $fondo-button-editaPaciente;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.2rem 0;
+  color: $text-button-editaPaciente;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover{
+    color:$text-button-editaPaciente;
+    background-color:$fondo-button-editaPaciente-hover;
+  }
+  i{
+    font-size:0.7rem;
+    margin-right: 0.2rem;
+  }
+}
+
+.buttonEditarExpediente{
+  padding: 0.3rem 1rem;
+  background-color: $fondo-button-editaPaciente;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.2rem 0;
+  color: $text-button-editaPaciente;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover{
+    color:$text-button-editaPaciente;
+    background-color:$fondo-button-editaPaciente-hover;
+  }
+  i{
+    font-size:0.7rem;
+    margin-right: 0.2rem;
+  }
+}
+
+.buttonAgendarCita{
+  padding: 0.3rem 1rem;
+  background-color: $fondo-button-editaPaciente;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.2rem 0;
+  color: $text-button-editaPaciente;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover{
+    color:$text-button-editaPaciente;
+    background-color:$fondo-button-editaPaciente-hover;
+  }
+  i{
+    font-size:0.7rem;
+    margin-right: 0.2rem;
+  }
+}
+
+.buttonEliminar{
+  background-color:$fondo-button-eliminar;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.2rem 0;
+  color:$text-button-eliminar;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover{
+    color:$text-button-eliminar;
+    background-color:$fondo-button-eliminar-hover;
+    cursor: pointer;
+  }
+  i{
+    font-size:1rem;
+    margin-right: 0;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}
+
+
+
+#main{
+  margin-top:120px;
+}
+
+.contentIngresarPaciente{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.titlePacientes{
+  display: flex;
+  align-items: end;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+a.nav-link.active {
+  position: relative;
+  color: #94e2ff!important;
+  transition: all 0.3s ease-in-out;
+}
+
+a.nav-link.active:hover {
+  position: relative;
+  color: #ffffff!important;
+  transition: all 0.3s ease-in-out;
+}
+
+a.nav-link.active:after {
+  content: "";
+  width: calc(100% - 20px);
+  height: 1px;
+  background-color: #94e2ff8b;
+  position: absolute;
+  top: 18px;
+  left: auto;
+}
+
+.contentButton{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+
+.contentButton button, .contentButton input{
+  width: 50%; 
+  white-space: nowrap;
+}
+
+
+
+.contentButton-col-2{
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contentButton-col-2 button{
+  width: 50%;
+  white-space: nowrap;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgb(252, 252, 252);
+  outline: none;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 50%);
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background: #bcbcbc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+  border: 1px solid #bcbcbc;
+}
+
+input[type="checkbox"]:checked::before{
+  transform: translateX(100%);
+  background: #fff;
+}
+
+input[type="checkbox"]:checked {
+  background: #66a4e2;
+}
+
+
+.hiddenRow {
+  padding: 0 !important;
+}
+
+.collapseActionTrows{
+  display:none;
+  transition: all 0.3s ease-in-out;
+}
+
+.collapseActionTrows.show{
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.contentAction {
+  padding: 3px 0 4px 0;
+  // background-color:$fondo-action;
+}
+
+.contentTitle {
+  padding: 5px 0 5px 1rem;
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#066dab+0,8abbd7+69,8abbd7+101 */
+background: #066dab; /* Old browsers */
+background: -moz-linear-gradient(left,  #066dab 0%, #8abbd7 69%, #8abbd7 101%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #066dab 0%,#8abbd7 69%,#8abbd7 101%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #066dab 0%,#8abbd7 69%,#8abbd7 101%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#066dab', endColorstr='#8abbd7',GradientType=1 ); /* IE6-9 */
+
+  color: $color-text-nav;
+  // color: #000;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 5px 5px 0 0;
+  font-weight: 600;
+}
+
+.collapseAction {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.collapseAction i{
+  color: red;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+// .table.citasThead tr th{
+//   font-size: 0.8rem;
+//   text-transform: uppercase;
+//   letter-spacing: 1px;
+//   color: #ffffff;
+//   background-color: #2c7fb7;
+//   border: none;
+//   padding: 0.5rem 0.5rem;
+//   text-align: center;
+// }

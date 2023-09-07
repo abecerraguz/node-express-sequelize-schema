@@ -94,7 +94,7 @@ CREATE TABLE AGENDAR_CITA(
 
 --INSERTAR DATOS DE PACIENTE
 
-INSERT INTO PACIENTES VALUES 
+INSERT INTO PACIENTE VALUES 
 ('P-0001', 'DANIEL', 'CARMONA', 'M', '1998-12-07', 'MEXICO', 'MEXICO', '551234567'),
 ('P-0002', 'JUAN', 'HERNANDEZ', 'M', '1990-07-21', 'MONTERREY', 'NUEVO LEON', '551234321'),
 ('P-0003', 'FERNANDA', 'MORALES', 'F', '1973-07-01', 'MEXICO', 'MEXICO', '5412309872'),
@@ -105,6 +105,12 @@ INSERT INTO PACIENTES VALUES
 ('P-0008', 'LESLY', 'RODRIGUEZ', 'F', '2001-02-11', 'MEXICO', 'MEXICO', '5543454352'),
 ('P-0009', 'ENRIQUE', 'VERA', 'M', '1996-11-12', 'GUADALAJARA', 'JALISCO', '3309815273'),
 ('P-0010', 'VICTORIA', 'SOLIS', 'F', '2002-03-10', 'MEXICO', 'MEXICO', '5565278126');
+
+
+select nombre, apellido, especialidad, consultario, fechaCita, horaCita,turno,observaciones from ESPECIALISTA e 
+inner join AGENDAR_CITA a on ( e.pk_idEspecialista = a.fk_idespecialista  ) 
+WHERE e.nombre = 'FELIPE';
+
 
 [
     {
@@ -421,3 +427,70 @@ SELECT * FROM CLINICA.EXPEDIENTE_DIAGNOSTICO;
 
 psql -h containers-us-west-83.railway.app -p 7439 -U postgres -W -d rdy26b7VypqC27Dm6Z6M
 PGPASSWORD=rdy26b7VypqC27Dm6Z6M psql -h containers-us-west-83.railway.app -U postgres -p 7439 -d railway
+
+
+select st.store_name, p.product_id, p.product_name , s.quantity from categories c 
+        inner join products p on (p.category_id = c.category_id) 
+        inner join stocks s on (s.product_id = p.product_id) 
+        inner join stores st on (st.store_id = s.store_id) 
+        order by p.product_name asc
+
+
+
+CREATE TABLE ESPECIALISTA(
+	pk_idEspecialista ID_MEESPECIALISTA,
+	nombre VARCHAR(20) NOT NULL,
+	apellido VARCHAR(20) NOT NULL,
+	sexo CHAR(1) NOT NULL,
+	fechaNacimiento DATE NOT NULL,
+	especialidad VARCHAR(30) NOT NULL,
+	PRIMARY KEY (pk_idEspecialista)
+);
+
+CREATE TABLE AGENDAR_CITA(
+	fk_idCita ID_CITA,
+	fk_idEspecialista ID_MEESPECIALISTA,
+	consultario VARCHAR(20) NOT NULL,
+	fechaCita DATE NOT NULL,
+	horaCita TIME NOT NULL,
+	turno VARCHAR(10) NOT NULL,
+	status VARCHAR(10) NOT NULL,
+	observaciones VARCHAR(100) NOT NULL,
+	PRIMARY KEY (fk_idCIta, fk_idEspecialista),
+	FOREIGN KEY (fk_idCita) REFERENCES CITA (pk_idCita)
+	ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (fk_idEspecialista) REFERENCES ESPECIALISTA(pk_idEspecialista)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- Lo que sale en la tabla id.pk_idEspecialista, n.nombre , a.apeliido , e.especialidad 
+-- from ESPECIALISTA e , la tabla ESPECIALISTA la llamarenos e
+-- 
+select pk_idEspecialista, nombre , apellido , especialidad from ESPECIALISTA e 
+        inner join AGENDAR_CITA a on (a.fk_idcita = e.pk_idEspecialista) 
+        -- inner join stocks s on (s.product_id = p.product_id) 
+        -- inner join stores st on (st.store_id = s.store_id) 
+        order by nombre asc;
+
+
+select st.store_name, p.product_id, p.product_name , s.quantity from categories c 
+        inner join products p on (p.category_id = c.category_id) 
+        inner join stocks s on (s.product_id = p.product_id) 
+        inner join stores st on (st.store_id = s.store_id) 
+        order by p.product_name asc
+
+
+select pk_idEspecialista, nombre , apellido , especialidad from ESPECIALISTA  
+        inner join AGENDAR_CITAS  on ( fk_idEspecialista =  pk_idEspecialista ) 
+        -- inner join stocks s on (s.product_id = p.product_id) 
+        -- inner join stores st on (st.store_id = s.store_id) 
+        order by nombre asc;
+
+
+select pk_idEspecialista, nombre , apellido , especialidad from AGENDAR_CITAS a 
+        inner join  ESPECIALISTA e on (e.pk_idEspecialista = a.fk_idEspecialista ) 
+        -- inner join stocks s on (s.product_id = p.product_id) 
+        -- inner join stores st on (st.store_id = s.store_id) 
+        order by nombre asc;
+
+

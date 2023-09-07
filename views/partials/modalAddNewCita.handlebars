@@ -1,0 +1,44 @@
+<div class="modal fade" id="openModalAddNewCita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Nueva cita</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form id="openModalAddNewCita__form">
+           <div class="mb-3">
+             <input type="date" class="form-control" id="fechaCita" placeholder="Fecha">
+           </div>
+           <div class="mb-3">
+             <input class="form-control" step="1800" type="time" ng-model="endTime" pattern="[0-9]*" value="04:00" id="horaCita"/>
+             {{!-- <input type="time" class="form-control" id="horaCita" placeholder="Hora"> --}}
+           </div>
+           <div class="mb-3">
+                <select class="form-select" id="especialistaCita" required>
+                    <option selected disabled value="">Seleccione especialista</option>
+                </select>
+           </div>
+           <div class="mb-3">
+             <input type="text" class="form-control" id="consultorioCita" placeholder="Consultorio">
+           </div>
+           <div class="mb-3">
+             <input type="text" class="form-control" id="turnoCita" placeholder="Turno"> 
+           </div>
+           <div class="mb-3">
+             <input type="text" class="form-control" id="statusCita" placeholder="Estado"> 
+           </div>
+           <div class="mb-3">
+             <textarea class="form-control" id="observacionesCita" placeholder="Observaciones consulta"></textarea>
+           </div>
+           <div class="d-grid gap-2">
+             <button type="submit" class="buttonGuardar gato">Guardar</button>
+           </div> 
+         </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+

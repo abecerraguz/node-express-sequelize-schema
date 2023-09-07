@@ -5,20 +5,20 @@
     <div class="table-responsive-sm">
         <div class="contentIngresarPaciente">
             <h2 class="titlePacientes"><span>Lista de Pacientes</span></h2>
-            <a class="ingresarData__link" href="#" id="nuevoPaciente"><i class="bi bi-plus-circle"></i>Nuevo
+            <a class="buttonNuevaData" href="#" id="nuevoPaciente"><i class="bi bi-plus-circle"></i>Nuevo
                 paciente</a>
         </div>
         <div class="contentTable">
             <table class="table px-2 table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col"></th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Sexo</th>
-                        <th scope="col">Fecha de Nacimiento</th>
+                        <th scope="col">Nacimiento</th>
+                        <th scope="col">Región</th>
                         <th scope="col">Ciudad</th>
-                        <th scope="col">Estado</th>
                         <th scope="col">Celular</th>
                         <th scope="col">Acción</th>
                     </tr>
@@ -26,30 +26,76 @@
                 <tbody id="infoTable">
                     {{#each pacientes}}
                     <tr>
-                        <td data-label="">{{this.pk_idPaciente}}</td>
+                        <th scope="row" class="collapseAction"><i class="bi bi-dash-circle"
+                                name="{{this.pk_idPaciente}}"></i></th>
                         <td data-label="">{{this.nombre}}</td>
                         <td data-label="">{{this.apellido}}</td>
                         <td data-label="">{{this.sexo}}</td>
                         <td data-label="">{{this.fechaNacimiento}}</td>
+                        <td data-label="">{{this.region}}</td>
                         <td data-label="">{{this.ciudad}}</td>
-                        <td data-label="">{{this.estado}}</td>
                         <td data-label="">{{this.telefono}}</td>
+
                         <td>
-                            <div class="contentButton">
-                                <button type="button" name="{{this.pk_idPaciente}}" class="btn btn-warning btn-sm" id="buttonEditar"><i class="bi bi-pencil-fill"></i> Editar</button>
-                                <button type="button" name="{{this.pk_idPaciente}}" class="btn btn-danger btn-sm" id="buttonEliminar"><i class="bi bi-trash"></i> Eliminar</button>
+                            <div class="contentButton {{this.pk_idPaciente}}" name="{{this.pk_idPaciente}}">
+                                <input type="checkbox" {{#if this.estado}}checked {{/if}} id="{{this.pk_idPaciente}}">
+                                <button type="button" name="{{this.pk_idPaciente}}" class="buttonEliminar"
+                                    id="buttonEliminar" {{#unless this.estado}}disabled {{/unless}}><i
+                                        class="bi bi-x-circle"></i></button>
+
                             </div>
                         </td>
                     </tr>
-                    {{/each}}
+                    <tr class="collapseActionTrows {{this.pk_idPaciente}}">
 
+                        <td colspan="10">
+                            <div class="contentAction {{this.pk_idPaciente}}">
+                                <button type="button" name="{{this.pk_idPaciente}}" class="buttonEditarPaciente"
+                                    id="buttonEditar" {{#unless this.estado}}disabled {{/unless}}><i
+                                        class="bi bi-pencil-fill"></i> Editar paciente</button>
+                                <button type="button" name="{{this.pk_idPaciente}}" class="buttonEditarExpediente"
+                                    id="buttonEditExpediente" {{#unless this.estado}}disabled {{/unless}}><i
+                                        class="bi bi-pencil-fill"></i> Editar Expediente</button>
+                                <button type="button" name="{{this.pk_idPaciente}}" class="buttonAgendarCita"
+                                    id="buttonNuevaCita" {{#unless this.estado}}disabled {{/unless}}><i
+                                        class="bi bi-plus-circle"></i> Agendar Cita</button>
+                            </div>
+
+                            <div class="contentTitle">Citas agendadas</div>
+
+                            <table class="table citasThead table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Doctor</th>
+                                        <th scope="col">Especialidad</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Hora</th>
+                                        <th scope="col">Consultorio</th>
+                                        <th scope="col">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="infoTableCitas" info="{{this.pk_idPaciente}}" id="citas-{{this.pk_idPaciente}}">
+                                   
+                                </tbody>
+                            </table>
+                        </td>
+
+
+
+                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
+
         </div>
 
     </div>
 </div>
-{{> partials/modalAddDataInput}}
-{{> partials/modalEditDataInput}}
+{{> partials/modalAddNewPacient}}
+{{> partials/modalEditPacient}}
+{{> partials/modalEditExpediente}}
+{{> partials/modalAddNewCita}}
 {{> partials/modalInfoAlert }}
 {{> partials/footer }}
+

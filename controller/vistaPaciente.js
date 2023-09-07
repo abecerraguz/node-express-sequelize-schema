@@ -6,33 +6,44 @@ const obtenerPacientes = async () => {
     return salida.data
 }
 
+const quitarEspacios = info => info.trim();
+
 export const vistaPaciente = (req,res) => {
     obtenerPacientes()
         .then((result) => {
-            const pacientes = result.proyectos
+            const pacientes = result.pacientes
             const arr = []
-            pacientes .forEach((element) => {
+            pacientes.forEach((element) => {
                
                 const paciente = {
+
                     pk_idPaciente:element.pk_idPaciente,
-                    nombre:element.nombre,
-                    apellido:element.apellido,
+                    nombre:quitarEspacios(element.nombre),
+                    apellido:quitarEspacios(element.apellido),
                     sexo:element.sexo,
                     fechaNacimiento: moment(element.fechaNacimiento.toString()).locale('es-us').format('LL') ,
-                    ciudad:element.ciudad,
-                    estado:element.estado,
-                    telefono:element.telefono
+                    region:element.region,
+                    ciudad:quitarEspacios(element.ciudad),
+                    telefono:quitarEspacios(element.telefono),
+                    estado:element.estado
                 }
                 arr.push(paciente)
                 
             })
-            renderRespuesta( arr )
+            renderRespuesta(  arr, true  )
+       
+          
         })
-    function renderRespuesta( pacientes ){
+        
+    
+    function renderRespuesta( pacientes,result ){
         res.render("pacientes",{
             layout:"main",
             title:"Bienvenidos al Sistema de Administración Clinica Santa María",
-            pacientes:pacientes
+            pacientes:pacientes,
+            estado:pacientes.estado,
+            expedientes:false
+            // expedientes:obtenerExpedientes().then( result => result.expedientes ).catch( err => console.log(err))
         })
     }
     

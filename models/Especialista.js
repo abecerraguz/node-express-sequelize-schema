@@ -49,7 +49,7 @@ export default Especialista;
     // Cada usuario "tiene muchas" publicaciones  (hasMany ---> Tiene Muchas )
 Especialista.hasMany( AgendarCita, {
     foreignKey: 'fk_idEspecialista', // clave foránea en el modelo Post
-    as: 'agendarCita', // nombre de la propiedad en el modelo User para acceder a los posts asociados
+    //as: 'fk_idEspecialista', // nombre de la propiedad en el modelo User para acceder a los posts asociados
     onDelete: 'CASCADE', // Establecer la opción de cascada para eliminar
     onUpdate: 'CASCADE', // Establecer la opción de cascada para actualizar
 });
@@ -70,6 +70,14 @@ Especialista.hasMany( ExpeDiagnostico, {
 ExpeDiagnostico.belongsTo( Especialista, {
     foreignKey: 'fk_idEspecialista' // clave foránea en el modelo Publicacion
 });
+
+
+
+
+
+
+
+
 
 
 

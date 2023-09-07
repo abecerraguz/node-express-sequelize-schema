@@ -1,0 +1,122 @@
+<div class="modal fade" id="openModalAddNewPacient" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Nuevo paciente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+        <form id="openModalAddNewPacient__form" class="needs-validation" novalidate>
+
+          <div class="mb-3">
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" required>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido" required>
+          </div>
+          <div class="mb-3">
+            <select class="form-select" id="sexo" required>
+              <option selected disabled value="">Seleccione Sexo</option>
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <input type="date" class="form-control" id="fechaNacimiento" placeholder="Ingrese fecha de nacimiento" required>
+          </div>
+
+          <div class="mb-3">
+            <select class="form-select" id="region" required>
+              <option selected disabled value="">Seleccione una región</option>
+              <option value="Arica y Parinacota">Región de Arica y Parinacota</option>
+              <option value="Tarapacá">Región de Tarapacá</option>
+              <option value="Antofagasta">Región de Antofagasta</option>
+              <option value="Atacama">Región de Atacama</option>
+              <option value="Coquimbo">Región de Coquimbo</option>
+              <option value="Valparaíso">Región de Valparaíso</option>
+              <option value="Metropolitana de Santiago">Región Metropolitana</option>
+              <option value="Libertador General Bernardo O'Higgins">Región del Libertador General Bernardo O'Higgins
+              </option>
+              <option value="Maule">Región del Maule</option>
+              <option value="Biobío">Región del Biobío</option>
+              <option value="Los Ríos">Región de Los Ríos</option>
+              <option value="Los Lagos">Región de Los Lagos</option>
+              <option value="Aysén del General Carlos Ibáñez del Campo">Región de Aysén del General Carlos Ibáñez del
+                Campo</option>
+              <option value="Magallanes y de la Antártica Chilena">Región de Magallanes y de la Antártica Chilena
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" class="form-control" id="ciudad" placeholder="Ingrese ciudad" required>
+            <small class="infoAlert ps-1 py-1 border-bottom"></small>
+          </div>
+
+          <div class="mb-3">
+            <input type="tel" class="form-control" id="telefono" placeholder="Ingrese celular" required>
+            <small class="infoAlert ps-1 border-bottom"></small>
+          </div>
+
+          <div class="mb-3">
+            <select class="form-select" id="estado" required>
+              <option selected disabled value="">Seleccione estado</option>
+              <option value="true">Activo</option>
+              <option value="false">Inactivo</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <select id="tipoSangre" class="form-select" required>
+              <option selected disabled value="">Seleccione el tipo de sangre</option>
+              <option value="Tipo A">Tipo A</option>
+              <option value="Tipo B">Tipo B</option>
+              <option value="Tipo AB">Tipo AB</option>
+              <option value="Tipo O">Tipo O</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="tipoAlergia" placeholder="Tipo de alergia" required>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="padecimientoCronico" placeholder="Padecimiento crónico" required>
+          </div>
+          <div class="mb-3">
+            <input type="date" class="form-control" id="fechaCreacion" placeholder="Ingrese fecha de creación" required>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="buttonGuardar">Guardar</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>

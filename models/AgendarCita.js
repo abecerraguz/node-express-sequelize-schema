@@ -1,33 +1,35 @@
 import { DataTypes } from 'sequelize';
 import db from '../db/connection.js';
 
-const Cita = db.define('agendar_citas',{
+const AgendarCita = db.define('agendar_citas',{
 
-    // fk_idCita:{
-    //     type:DataTypes.CHAR(7),
-    //     primaryKey:true,
-    //     allowNull: false,
-    //     validate: {
-    //         fk_idCita(value) {
-    //           if (!value.match(/^[CM]{2}[-]{1}\d{4}$/)) {
-    //             throw new Error('El ID de la cita no coincide con el formato esperado CM-0000.');
-    //           }
-    //         }
-    //       }
-    // },
-    // fk_idEspecialista:{
-    //     type:DataTypes.CHAR(7),
-    //     primaryKey:true,
-    //     allowNull: false,
-    //     validate: {
-    //         fk_idEspecialista(value) {
-    //           if (!value.match(/^[ME]{2}[-]{1}\d{4}$/)) {
-    //             throw new Error('El ID de la cita no coincide con el formato esperado CM-0000.');
-    //           }
-    //         }
-    //       }
-    // },
-    consultario:{
+    fk_idCita:{
+        type:DataTypes.CHAR(7),
+        primaryKey:true,
+        allowNull: false,
+        validate: {
+            fk_idCita(value) {
+              if (!value.match(/^[CM]{2}[-]{1}\d{4}$/)) {
+                throw new Error('El ID de la cita no coincide con el formato esperado CM-0000.');
+              }
+            }
+          }
+    },
+    
+    fk_idEspecialista:{
+        type:DataTypes.CHAR(7),
+        primaryKey:true,
+        allowNull: false,
+        validate: {
+            fk_idEspecialista(value) {
+              if (!value.match(/^[ME]{2}[-]{1}\d{4}$/)) {
+                throw new Error('El ID de la cita no coincide con el formato esperado CM-0000.');
+              }
+            }
+          }
+    },
+
+    consultorio:{
         type:DataTypes.STRING(20),
         allowNull: false,
     },
@@ -56,6 +58,7 @@ const Cita = db.define('agendar_citas',{
     timestamps:false
 }
 )
-export default Cita;
+export default AgendarCita;
+
 
 

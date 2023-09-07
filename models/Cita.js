@@ -31,18 +31,26 @@ const Cita = db.define('cita',{
 )
 export default Cita;
 
+
 // RELACION 1 es A 1 desde Cita a Agendar Cita
 // 1. Establece la asociación en uno de los modelos ( por ejemplo, en Usuario ):
     // Cada usuario "tiene un" perfil asociado (hasOne ---> "Tiene un")
 Cita.hasOne( AgendarCita, {
       foreignKey: 'fk_idCita', // clave foránea en el modelo Perfil
-      as: 'cita' // nombre de la propiedad en el modelo Cita para acceder al perfil asociado
+      //as: 'cita' // nombre de la propiedad en el modelo Cita para acceder al perfil asociado
 });
   
 // 2. Establece la asociación inversa en el otro modelo (Profile):
      // El modelo Perfil "pertenece a" un usuario ( belongsTo ---> "Pertenece a" )
 AgendarCita.belongsTo( Cita, {
       foreignKey: 'fk_idCita' // clave foránea en el modelo Cita
-  });
+});
+
+
+
+
+
+
+
 
 

@@ -1,4 +1,5 @@
 import AgendarCita from '../models/AgendarCita.js';
+import Especialista from '../models/Especialista.js';
 
 
 export const getAgendarCitas = async(req,res) =>{
@@ -22,12 +23,10 @@ export const postAgendarCita = async (req,res) => {
 
    const { body } = req;
 
+   console.log('postAgendarCita-->', body.fk_idCita)
+
    try {
-        const existefk_idEspecialista = await AgendarCita.findOne({
-            where:{
-                fk_idEspecialista:body.fk_idEspecialista
-            }
-        })
+
 
         const existefk_idCita = await AgendarCita.findOne({
             where:{
@@ -35,9 +34,9 @@ export const postAgendarCita = async (req,res) => {
             }
         })
 
-        if(existefk_idEspecialista || existefk_idCita){
+        if(existefk_idCita){
             return res.status(400).json({
-                msg:`Ya existe el id de la cita ${body.fk_idEspecialista }`
+                msg:`Ya existe el id de la cita ${body.existefk_idCita }`
             })
         }
 
@@ -50,6 +49,7 @@ export const postAgendarCita = async (req,res) => {
             msg:`${error}`
         })
    }
+
   
 
 }
@@ -89,29 +89,4 @@ export const deleteAgendarCita = async (req,res) =>{
     res.json(cita)
 }
 
-// Obtiene todas las tereas de un proyecto
-// export async function getProyectoTareas(req,res) {
-//     const { id } = req.params;
-//     try {
 
-//       const tareas = await Tarea.findAll({
-//         attributes: ["id", "proyectoId", "nombre", "estado"],
-//         where: { proyectoId: id },
-//       });
-     
-//       if(!tareas){
-//         console.log('Mierda', tareas.length)
-//         return res.status(404).json({
-//             msg:`El proyecto no tiene asignada ninguna tarea`
-//         })
-//       }else{
-//         res.json(tareas);
-//       }
-    
-      
-     
-
-//     } catch (e) {
-//       return res.status(500).json({ message: e.message });
-//     }
-//   }

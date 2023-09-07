@@ -1,7 +1,8 @@
 import { DataTypes } from 'sequelize';
 import db from './../db/connection.js';
 import Expediente from './Expediente.js';
-import Cita from './Cita.js'
+import Cita from './Cita.js';
+import AgendarCita from './AgendarCita.js';
 
 const Paciente = db.define('paciente',{
 
@@ -33,17 +34,22 @@ const Paciente = db.define('paciente',{
         type:DataTypes.DATE,
         allowNull: false,
     },
-    ciudad:{
-        type:DataTypes.STRING(20),
+    region:{
+        type:DataTypes.STRING(200),
         allowNull: false
     },
-    estado:{
-        type:DataTypes.STRING(20),
+    ciudad:{
+        type:DataTypes.STRING(200),
         allowNull: false
     },
     telefono:{
         type:DataTypes.CHAR(12),
+        // allowNull: false
         unique:true
+    },
+    estado:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
     }
 },
 {
@@ -79,3 +85,7 @@ Cita.belongsTo( Paciente, {
     foreignKey: 'fk_idPaciente'
 });
 // // CIERRE Relación uno es a muchos 
+
+
+
+

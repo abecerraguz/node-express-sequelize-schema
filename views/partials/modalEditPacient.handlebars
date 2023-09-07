@@ -1,0 +1,76 @@
+<div class="modal fade" id="openModalEditPacient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Editar paciente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalEditDataInput__info">
+        <form id="openModalEditPacient__form">
+           <div class="mb-3">
+             <input type="text" class="form-control" id="editNombre" placeholder="Ingrese nombre">
+             <small class="infoAlert ps-1 py-1 border-bottom"></small>
+           </div>
+           <div class="mb-3">
+             <input type="text" class="form-control" id="editApellido" placeholder="Ingrese apellido">
+             <small class="infoAlert ps-1 py-1 border-bottom"></small>
+           </div>
+           <div class="mb-3">
+             <select class="form-select" id="editSexo">
+               <option selected>Seleccione Sexo</option>
+               <option value="M">Masculino</option>
+               <option value="F">Femenino</option>
+             </select>
+           </div>
+           <div class="mb-3">
+             <input type="date" class="form-control" id="editFechaNacimiento" placeholder="Ingrese fecha de nacimiento">
+           </div>
+                       
+          <div class="mb-3">
+              <select class="form-select" id="editRegion">
+                <option selected>Seleccione una región</option>
+                <option value="Arica y Parinacota">Región de Arica y Parinacota</option>
+                <option value="Tarapacá">Región de Tarapacá</option>
+                <option value="Antofagasta">Región de Antofagasta</option>
+                <option value="Atacama">Región de Atacama</option>
+                <option value="Coquimbo">Región de Coquimbo</option>
+                <option value="Valparaíso">Región de Valparaíso</option>
+                <option value="Metropolitana de Santiago">Región Metropolitana</option>
+                <option value="Libertador General Bernardo O'Higgins">Región del Libertador General Bernardo O'Higgins</option>
+                <option value="Maule">Región del Maule</option>
+                <option value="Biobío">Región del Biobío</option>
+                <option value="Los Ríos">Región de Los Ríos</option>
+                <option value="Los Lagos">Región de Los Lagos</option>
+                <option value="Aysén del General Carlos Ibáñez del Campo">Región de Aysén del General Carlos Ibáñez del Campo</option>
+                <option value="Magallanes y de la Antártica Chilena">Región de Magallanes y de la Antártica Chilena</option>
+              </select>
+          </div>
+           <div class="mb-3">
+             <input type="text" class="form-control" id="editCiudad" placeholder="Ingrese ciudad">
+             <small class="infoAlert ps-1 py-1 border-bottom"></small>
+           </div>
+           <div class="mb-3">
+             <input type="tel" class="form-control" id="editTelefono" placeholder="Ingrese celular">
+              <small class="infoAlertCelular border-bottom"></small>
+           </div>
+            <div class="mb-3">
+              <label for="editEstado">Estado</label>
+              <select class="form-select" id="editEstado">
+                <option selected>Seleccione estado</option>
+                <option value="true">Activo</option>
+                <option value="false">Inactivo</option>
+              </select>
+            </div>
+           <div class="d-grid gap-2">
+             <button type="submit" class="buttonGuardar gato">Guardar</button>
+           </div> 
+         </form>
+       
+      </div>
+      <div class="modal-footer">
+        {{!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button> --}}
+      </div>
+    </div>
+  </div>
+</div>

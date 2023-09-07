@@ -5,7 +5,7 @@ import especialistaRoutes from '../routes/especialista.js';
 import expedienteRoutes from '../routes/expediente.js';
 import citaRoutes from '../routes/cita.js';
 import agendarCitasRoutes from '../routes/agendarCita.js';
-
+import citasEspecialista from '../routes/citasEspecialista.js'
 
 // Importamos nuestro Motor de plantilla
 import { create } from 'express-handlebars';
@@ -37,7 +37,9 @@ class Server {
             especialistas:'/api/especialistas',
             expedientes:'/api/expedientes',
             citas:'/api/citas',
-            agendar_citas:'api/agendar_citas',
+            citasEspecialistas:'/api/citas_especialistas',
+            agendar_citas:'/api/agendar_citas',
+
 
             // Rutas para el Front End
             rootHome:'/',
@@ -70,7 +72,7 @@ class Server {
             */
 
             // await db.authenticate()
-            await db.sync({ force: false })
+            await db.sync({ force:false })
             console.log('Database arriba')
         } catch (error) {
             throw new Error(error)
@@ -101,6 +103,9 @@ class Server {
         this.app.use( this.apiPaths.expedientes , expedienteRoutes );
         this.app.use( this.apiPaths.citas , citaRoutes );
         this.app.use( this.apiPaths.agendar_citas , agendarCitasRoutes );
+
+        this.app.use( this.apiPaths.citasEspecialistas, citasEspecialista );
+
         this.app.use( this.apiPaths.rootHome, vistaHome );
         this.app.use( this.apiPaths.rootPacientes, vistaPacientes );
         this.app.use( this.apiPaths.rootEspecialidades, vistaEspecialista );
