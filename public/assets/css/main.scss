@@ -1,5 +1,6 @@
 // Variables 
 $fondo-body: #dbdbdb;
+$table-responsive-sm: #f1f1f1;
 
 $fondo-footer: #fafafa;
 $fondo-action: #ebe8e8;
@@ -54,6 +55,7 @@ $border-text: #80bbe3;
 $color-text-nav: #ffffff;
 $color-text-hover: #94e2ff;
 $color-text-border-right: #94e2ff;
+$color-text: #ffffff;
 
 $color-name:#2c7fb7;
 $color-text-hover: #000000;
@@ -107,9 +109,10 @@ footer small{
 }
 
 .table-responsive-sm{
-  padding: 0 1rem 0.2rem 1rem;
-  background-color: $fondo-table;
+  padding: 1rem 1rem 0.2rem 1rem;
+  background-color: $table-responsive-sm;
   position: relative;
+  border-radius: 0.5rem;
 }
 
 .contentTable{
@@ -225,11 +228,48 @@ footer small{
     color:$text-button-editaPaciente;
     background-color:$fondo-button-editaPaciente-hover;
   }
+
+  &:disabled{
+    pointer-events: none;
+    opacity: 0.5;
+  }
   i{
     font-size:0.7rem;
     margin-right: 0.2rem;
   }
 }
+
+.buttonEditarEspecialista{
+  padding: 0.3rem 1rem;
+  background-color: $fondo-button-editaPaciente;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.2rem 0;
+  color: $text-button-editaPaciente;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover{
+    color:$text-button-editaPaciente;
+    background-color:$fondo-button-editaPaciente-hover;
+  }
+
+  &:disabled{
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  i{
+    font-size:0.7rem;
+    margin-right: 0.2rem;
+  }
+}
+
+
 
 .buttonEditarExpediente{
   padding: 0.3rem 1rem;
@@ -249,6 +289,10 @@ footer small{
   &:hover{
     color:$text-button-editaPaciente;
     background-color:$fondo-button-editaPaciente-hover;
+  }
+  &:disabled{
+    pointer-events: none;
+    opacity: 0.5;
   }
   i{
     font-size:0.7rem;
@@ -275,6 +319,10 @@ footer small{
     color:$text-button-editaPaciente;
     background-color:$fondo-button-editaPaciente-hover;
   }
+  &:disabled{
+    pointer-events: none;
+    opacity: 0.5;
+  }
   i{
     font-size:0.7rem;
     margin-right: 0.2rem;
@@ -299,6 +347,10 @@ footer small{
     color:$text-button-eliminar;
     background-color:$fondo-button-eliminar-hover;
     cursor: pointer;
+  }
+  &:disabled{
+    pointer-events: none;
+    opacity: 0.5;
   }
   i{
     font-size:1rem;
@@ -329,6 +381,7 @@ footer small{
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 600;
+  // color:$color-text;
 }
 
 a.nav-link.active {
@@ -461,6 +514,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#066dab', end
   color: red;
   cursor: pointer;
   font-size: 1.3rem;
+}
+
+.disabled{
+  width: 100%;
+  height: auto;
+  position: relative;
+  &::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    z-index: 1;
+  }
 }
 
 // .table.citasThead tr th{

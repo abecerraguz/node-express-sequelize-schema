@@ -208,6 +208,7 @@ if (typeof window === 'object') {
           estado
         })
         if (estado) {
+
           infoAlert('Usuario habilitado');
 
           const thisButton = document.querySelectorAll(`.contentButton.${id} button`);
@@ -220,19 +221,31 @@ if (typeof window === 'object') {
             element.disabled = '';
           })
 
+          const thisTable = document.querySelectorAll(`.contentInfoTableAgendarCita.${id}`);
+          thisTable.forEach(element => {
+            element.classList.remove('disabled')
+          })
+
         } else {
+
           infoAlert('Usuario deshabilitado');
           const thisButton = document.querySelectorAll(`.contentButton.${id} button`);
           thisButton.forEach(element => {
             element.disabled = 'disabled';
-            element.style.opacity = 0.5;
           })
 
           const thisButtonDos = document.querySelectorAll(`.contentAction.${id} button`);
           thisButtonDos.forEach(element => {
             element.disabled = 'disabled';
-            element.style.opacity = 0.5;
           })
+
+          const thisTable = document.querySelectorAll(`.contentInfoTableAgendarCita.${id}`);
+          console.log('XXXX--->', thisTable)
+          thisTable.forEach(element => {
+            console.log('Salida de element--->', element)
+            element.classList.add('disabled')
+          })
+
         }
         //estado ? infoAlert('Usuario habilitado') : infoAlert('Usuario deshabilitado')
       }
@@ -290,7 +303,7 @@ if (typeof window === 'object') {
 
       const infotableAllPacientes = document.querySelectorAll('.infoTableCitas')
 
-      infotableAllPacientes.forEach( element => {
+      infotableAllPacientes.forEach(element => {
 
         let infotable = element.getAttribute('info')
 
@@ -298,27 +311,52 @@ if (typeof window === 'object') {
           .then(result => {
 
             let data = result.data,
-            findIdPaciente = data.filter(element => element.fk_idPaciente == infotable)
+              findIdPaciente = data.filter(element => element.fk_idPaciente == infotable)
+
+            console.log('XXXXX--->', data)
+
+
+            const contentInfoTableAgendarCita = document.querySelectorAll('.contentInfoTableAgendarCita')
+
+
+
+            contentInfoTableAgendarCita.forEach(element => {
+              if (data == 0) {
+                element.classList.add('d-none')
+              } else {
+                element.classList.remove('d-none')
+              }
+            })
 
             for (const key in findIdPaciente) {
               if (Object.hasOwnProperty.call(findIdPaciente, key)) {
-                const element = findIdPaciente[key];
 
-                let { agendar_cita: { fk_idCita: idCita, fk_idEspecialista: idEsp, consultorio: consult, fechaCita: fecha, horaCita: hora },} = element;
+                const element = findIdPaciente[key];
+                const { agendar_cita: { fk_idCita: idCita, fk_idEspecialista: idEsp, consultorio: consult, fechaCita: fecha, horaCita: hora }, } = element;
 
                 const horaCita = moment(hora, 'HH:mm:ss'),
-                formatoHora = horaCita.format('hh:mm A');
+                  formatoHora = horaCita.format('hh:mm A');
 
                 if (element.fk_idPaciente == infotable) {
 
+
+
+
+
                   axios.get(`/api/especialistas/${idEsp}`)
                     .then(result => {
-                
-                        const dataEspecialista = result.data
-                        const { nombre,apellido,especialidad } = dataEspecialista
-                        document.querySelector(`#citas-${infotable}`).innerHTML += `
+
+                      const dataEspecialista = result.data
+
+
+
+
+                      const { nombre, apellido, especialidad } = dataEspecialista
+
+                      // <button type="button" name="${idCita}" class="buttonEliminar" id="buttonEliminar"><i class="bi bi-x-circle"></i></button>
+                      document.querySelector(`#citas-${infotable}`).innerHTML += `
                                   <tr>
-                                      <th scope="row">${parseInt(key)+1}</th>
+                                      <th scope="row">${parseInt(key) + 1}</th>
                                       <td>${nombre} ${apellido}</td>
                                       <td>${especialidad}</td>
                                       <td>${moment(fecha.toString()).locale('es-us').format('LL')}</td>
@@ -331,10 +369,47 @@ if (typeof window === 'object') {
                                       </td>
                                   </tr>
                             `
+
+                      const infoTableCitasButton = document.querySelectorAll('.infoTableCitas button')
+                      console.log(infoTableCitasButton)
+                      infoTableCitasButton.forEach(element => {
+                        console.log(element)
+                        element.addEventListener('click', (e) => {
+                          e.preventDefault();
+                          let id = e.target.name
+                          Swal.fire({
+                            title: 'Está seguro de eliminar la cita?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Sí, seguro',
+                            cancelButtonText: 'No, no quiero'
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                              Swal.fire({
+                                title: 'Borrado!',
+                                icon: 'success',
+                                text: 'La cita a sido anulada'
+                              })
+                              axios.delete(`/api/citas/${id}`)
+                                .then(result => {
+                                  console.log('Salida de result', result)
+                                  window.location.reload();
+                                  classList.add('d-none')
+                                })
+                            }
+
+                          })
+
+
+
+                        })
+                      })
+
+
                     })
                     .catch(e => console.log(e))
 
-                  
+
                 }
 
               }
@@ -345,6 +420,10 @@ if (typeof window === 'object') {
 
 
       })
+
+
+
+
 
     }
 

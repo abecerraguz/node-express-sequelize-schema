@@ -61,24 +61,29 @@
                                         class="bi bi-plus-circle"></i> Agendar Cita</button>
                             </div>
 
-                            <div class="contentTitle">Citas agendadas</div>
+                            <div class="contentInfoTableAgendarCita {{this.pk_idPaciente}} {{#unless this.estado}}disabled {{/unless}}">
+                                <div class="contentTitle">Citas agendadas</div>
 
-                            <table class="table citasThead table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Doctor</th>
-                                        <th scope="col">Especialidad</th>
-                                        <th scope="col">Fecha</th>
-                                        <th scope="col">Hora</th>
-                                        <th scope="col">Consultorio</th>
-                                        <th scope="col">Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="infoTableCitas" info="{{this.pk_idPaciente}}" id="citas-{{this.pk_idPaciente}}">
-                                   
-                                </tbody>
-                            </table>
+                                <table class="table citasThead table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Doctor</th>
+                                            <th scope="col">Especialidad</th>
+                                            <th scope="col">Fecha</th>
+                                            <th scope="col">Hora</th>
+                                            <th scope="col">Consultorio</th>
+                                            <th scope="col">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="infoTableCitas" info="{{this.pk_idPaciente}}" id="citas-{{this.pk_idPaciente}}">
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
                         </td>
 
 
@@ -98,4 +103,3 @@
 {{> partials/modalAddNewCita}}
 {{> partials/modalInfoAlert }}
 {{> partials/footer }}
-

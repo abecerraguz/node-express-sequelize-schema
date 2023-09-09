@@ -22,14 +22,13 @@ export const vistaEspecialista = (req,res) => {
                 }
                 arr.push(especialista)
             })
-            console.log( 'Especialistas--->',  arr )
             renderRespuesta( arr )
         })
     function renderRespuesta( especialistas ){
 
         res.render("especialistas",{
             layout:"main",
-            title:"Bienvenidos al Sistema de Administración Clinica Santa María",
+            title:"Bienvenidos al Sistema de Administración",
             especialistas:especialistas
         })
     }

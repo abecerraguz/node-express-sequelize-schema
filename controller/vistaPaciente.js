@@ -39,7 +39,7 @@ export const vistaPaciente = (req,res) => {
     function renderRespuesta( pacientes,result ){
         res.render("pacientes",{
             layout:"main",
-            title:"Bienvenidos al Sistema de Administración Clinica Santa María",
+            title:"Bienvenidos al Sistema de Administración",
             pacientes:pacientes,
             estado:pacientes.estado,
             expedientes:false
