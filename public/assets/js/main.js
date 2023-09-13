@@ -319,12 +319,15 @@ if (typeof window === 'object') {
             contentInfoTableAgendarCita.forEach( ( element, index) => {
               for (let index = 0; index < data.length; index++) {
                 const element = data[index];
-                // console.log('Mierda de element', element.fk_idPaciente)
+                    // console.log('element.fk_idPaciente 1--->', element.fk_idPaciente)
+                    // console.log('contentInfoTableAgendarCita[index].getAttribute(infotable) 2--->', element.fk_idPaciente == contentInfoTableAgendarCita[index].getAttribute('infotable'))
                     if(element.fk_idPaciente == contentInfoTableAgendarCita[index].getAttribute('infotable')){
-                     console.log('element-->',contentInfoTableAgendarCita[index])
+                    //  console.log('element-->',contentInfoTableAgendarCita[index])
                    
-                     contentInfoTableAgendarCita[index].classList.remove('d-none')
-                  }
+                      contentInfoTableAgendarCita[index].classList.remove('d-none')
+                    }else{
+                      contentInfoTableAgendarCita[index].classList.remove('d-none')
+                    }
 
               }
               
@@ -369,9 +372,9 @@ if (typeof window === 'object') {
                             `
 
                       const infoTableCitasButton = document.querySelectorAll('.infoTableCitas button')
-                      console.log(infoTableCitasButton)
+                      // console.log(infoTableCitasButton)
                       infoTableCitasButton.forEach(element => {
-                        console.log(element)
+                        // console.log(element)
                         element.addEventListener('click', (e) => {
                           e.preventDefault();
                           let id = e.target.name
