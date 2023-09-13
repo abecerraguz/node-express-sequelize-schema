@@ -300,6 +300,7 @@ if (typeof window === 'object') {
         })
 
 
+   
 
       const infotableAllPacientes = document.querySelectorAll('.infoTableCitas')
 
@@ -313,20 +314,23 @@ if (typeof window === 'object') {
             let data = result.data,
               findIdPaciente = data.filter(element => element.fk_idPaciente == infotable)
 
-            console.log('XXXXX--->', data)
+            // Borra la tabla de la agenda de la cita si no hay cita
+            const contentInfoTableAgendarCita = document.querySelectorAll(`.contentInfoTableAgendarCita`)
+            contentInfoTableAgendarCita.forEach( ( element, index) => {
+              for (let index = 0; index < data.length; index++) {
+                const element = data[index];
+                // console.log('Mierda de element', element.fk_idPaciente)
+                    if(element.fk_idPaciente == contentInfoTableAgendarCita[index].getAttribute('infotable')){
+                     console.log('element-->',contentInfoTableAgendarCita[index])
+                   
+                     contentInfoTableAgendarCita[index].classList.remove('d-none')
+                  }
 
-
-            const contentInfoTableAgendarCita = document.querySelectorAll('.contentInfoTableAgendarCita')
-
-
-
-            contentInfoTableAgendarCita.forEach(element => {
-              if (data == 0) {
-                element.classList.add('d-none')
-              } else {
-                element.classList.remove('d-none')
               }
+              
             })
+            // Borra la tabla de la agenda de la cita si no hay cita
+
 
             for (const key in findIdPaciente) {
               if (Object.hasOwnProperty.call(findIdPaciente, key)) {
@@ -339,18 +343,12 @@ if (typeof window === 'object') {
 
                 if (element.fk_idPaciente == infotable) {
 
-
-
-
-
                   axios.get(`/api/especialistas/${idEsp}`)
                     .then(result => {
 
                       const dataEspecialista = result.data
 
-
-
-
+                  
                       const { nombre, apellido, especialidad } = dataEspecialista
 
                       // <button type="button" name="${idCita}" class="buttonEliminar" id="buttonEliminar"><i class="bi bi-x-circle"></i></button>
@@ -363,8 +361,8 @@ if (typeof window === 'object') {
                                       <td>${formatoHora}</td>
                                       <td>${consult}</td>
                                       <td>
-                                          <div class="contentButton ${idCita}" name="${idCita}">
-                                            <button type="button" name="${idCita}" class="buttonEliminar" id="buttonEliminar"><i class="bi bi-x-circle"></i></button>
+                                          <div class="contentButtonCitasAgendadas ${idCita}" name="${idCita}">
+                                            <button type="button" name="${idCita}" class="buttonEliminarCitas" id="buttonEliminar"><i class="bi bi-x-circle"></i></button>
                                           </div>
                                       </td>
                                   </tr>

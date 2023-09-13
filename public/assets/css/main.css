@@ -1,5 +1,16 @@
+@font-face {
+  font-family: "roboto_condensedregular";
+  src: url("./../font/robotocondensed-regular.woff2") format("woff2"), url("./../font/robotocondensed-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   background-color: #dbdbdb;
+  font-family: "roboto_condensedregular", sans-serif;
+}
+
+body * {
+  font-family: "roboto_condensedregular", sans-serif;
 }
 
 footer {
@@ -40,7 +51,7 @@ footer small {
 }
 
 .table-responsive-sm .contentTable table thead {
-  background-color: #f1f1f1 !important;
+  background-color: #f1f1f1;
 }
 
 .navbar-nav .nav-item .nav-link {
@@ -262,6 +273,37 @@ footer small {
   cursor: pointer;
 }
 
+.buttonEliminarCitas {
+  background-color: #e77580;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.2rem 0;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+.buttonEliminarCitas:hover {
+  color: #ffffff;
+  background-color: #bf404c;
+  cursor: pointer;
+}
+.buttonEliminarCitas:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.buttonEliminarCitas i {
+  font-size: 1rem;
+  margin-right: 0;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 #main {
   margin-top: 120px;
 }
@@ -314,6 +356,17 @@ a.nav-link.active:after {
 
 .contentButton button, .contentButton input {
   width: 50%;
+  white-space: nowrap;
+}
+
+.contentButtonCitasAgendadas {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.contentButtonCitasAgendadas button {
+  max-width: 50%;
   white-space: nowrap;
 }
 
@@ -423,6 +476,17 @@ input[type=checkbox]:checked {
   left: 0;
   opacity: 0.5;
   z-index: 1;
+}
+
+table.table.px-2.table-hover thead {
+  height: 50px;
+  background: red !important;
+  vertical-align: middle;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.04rem;
+  color: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */

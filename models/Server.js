@@ -93,7 +93,7 @@ class Server {
         this.app.use('/sweetalert2',express.static( `${__dirname}/../node_modules/sweetalert2/dist`));
         this.app.use('/axios',express.static( `${__dirname}/../node_modules/axios/dist`));
         this.app.use('/moment',express.static( `${__dirname}/../node_modules/moment/dist`));
-
+        this.app.use('/font',express.static(  `${__dirname}/../public/assets/font`  ));
     }
 
     routes(){

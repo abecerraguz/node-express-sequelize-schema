@@ -32,6 +32,11 @@ $fondo-button-eliminar:#dc3545;
 $fondo-button-eliminar-hover:#de061c;
 $text-button-eliminar:#ffffff;
 
+// Boton Eliminar cita
+$fondo-button-eliminar-cita:#e77580;
+$fondo-button-eliminar-cita-hover:#bf404c;
+$text-button-eliminar-cita:#ffffff;
+
 
 
 
@@ -72,7 +77,13 @@ $screen-md-min: 768px;
 $screen-lg-min: 1024px;
 
 // Font-Family
-$font-family-sans-serif: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: 'roboto_condensedregular';
+  src: url('./../font/robotocondensed-regular.woff2') format('woff2'),
+       url('./../font/robotocondensed-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @mixin breakpoint($media) {
   @if $media == xs {
@@ -92,7 +103,14 @@ $font-family-sans-serif: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
 body{
   background-color:$fondo-body;
+  font-family: 'roboto_condensedregular', sans-serif;
 }
+
+body * {
+  font-family: 'roboto_condensedregular', sans-serif;
+}
+
+
 
 footer{
   width: 100%;
@@ -132,7 +150,7 @@ footer small{
 }
 
 .table-responsive-sm .contentTable table thead{
-  background-color: #f1f1f1!important;
+  background-color: #f1f1f1;
 }
 
 .navbar-nav .nav-item .nav-link{
@@ -360,6 +378,38 @@ footer small{
   }
 }
 
+.buttonEliminarCitas{
+  background-color:$fondo-button-eliminar-cita;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0.2rem 0;
+  color:$text-button-eliminar-cita;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover{
+    color:$text-button-eliminar-cita;
+    background-color:$fondo-button-eliminar-cita-hover;
+    cursor: pointer;
+  }
+  &:disabled{
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  i{
+    font-size:1rem;
+    margin-right: 0;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}
+
+
 
 
 #main{
@@ -413,13 +463,21 @@ a.nav-link.active:after {
   gap: 0.5rem;
 }
 
-
-
 .contentButton button, .contentButton input{
   width: 50%; 
   white-space: nowrap;
 }
 
+.contentButtonCitasAgendadas{
+  display: flex;
+  justify-content:end;
+  align-items: center;
+}
+
+.contentButtonCitasAgendadas button{
+  max-width: 50%; 
+  white-space: nowrap;
+}
 
 
 .contentButton-col-2{
@@ -531,6 +589,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#066dab', end
     opacity: 0.5;
     z-index: 1;
   }
+}
+
+table.table.px-2.table-hover thead {
+  height: 50px;
+  background: red !important;
+  vertical-align: middle;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.04rem;
+  color: #fff;
 }
 
 // .table.citasThead tr th{

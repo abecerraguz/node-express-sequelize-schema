@@ -61,7 +61,7 @@
                                         class="bi bi-plus-circle"></i> Agendar Cita</button>
                             </div>
 
-                            <div class="contentInfoTableAgendarCita {{this.pk_idPaciente}} {{#unless this.estado}}disabled {{/unless}}">
+                            <div class="contentInfoTableAgendarCita {{this.pk_idPaciente}} {{#unless this.estado}}disabled {{/unless}} d-none" infotable="{{this.pk_idPaciente}}">
                                 <div class="contentTitle">Citas agendadas</div>
 
                                 <table class="table citasThead table-hover">
@@ -103,3 +103,4 @@
 {{> partials/modalAddNewCita}}
 {{> partials/modalInfoAlert }}
 {{> partials/footer }}
+
